@@ -12,7 +12,8 @@ i18n
                     'Projects': 'Projects',
                     'Description': 'Hi! I\'m Rubén, a full-stack developer from Spain',
                     'Copied': 'Copied!',
-                    'Working': 'Work in progress'
+                    'Working': 'Work in progress',
+                    'CV' : '../public/cv-english.pdf'
                 }
             },
             es: {
@@ -22,7 +23,8 @@ i18n
                     'Projects': 'Proyectos',
                     'Description': 'Hola! Soy Rubén, un desarrollador full-stack de España',
                     'Copied': 'Copiado!',
-                    'Working': 'Trabajo en progreso'
+                    'Working': 'Trabajo en progreso',
+                    'CV' : '../public/cv-spanish.pdf'
                 }
             }
         },
