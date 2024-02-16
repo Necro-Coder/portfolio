@@ -59,7 +59,6 @@ body {
     overflow: hidden;
     color: var(--light-color);
     background-color: var(--primary-color);
-    background-image: url("../public/back-image.svg");
     background-blend-mode: color-burn;
 }
 
@@ -89,13 +88,14 @@ h3 {
     width: 20%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    place-items: center;
+    align-items: start;
+    gap: 3vh;
 }
 
 .aside-container .social-container {
     display: flex;
     place-items: center;
+    flex-wrap: wrap;
     gap: 5px;
 }
 
@@ -103,6 +103,8 @@ h3 {
 .contact-general {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
     gap: 1vh;
     margin-bottom: 1vh;
 }
@@ -113,14 +115,14 @@ h3 {
     backdrop-filter: blur(10px);
     border-radius: 15px;
     border: 1px solid var(--shadow-color);
-    box-shadow: 0 0 32px 0 var(--shadow-color);
+    box-shadow: 0 0 20px 0 var(--shadow-color);
     transition: all 0.3s;
     cursor: pointer;
 }
 
 .social-card:hover {
     background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 50px 20px var(--shadow-color-small);
+    box-shadow: 0 0 30px 5px var(--shadow-color-small);
     color: var(--accent-color);
 }
 
@@ -128,12 +130,16 @@ h3 {
     cursor: pointer;
 }
 
+.email-container {
+    margin-top: 1vh;
+}
+
 .email-input {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 5px;
     border: 1px solid var(--shadow-color);
-    box-shadow: 0 0 32px 0 var(--shadow-color-small);
+    box-shadow: 0 0 20px 0 var(--shadow-color-small);
     transition: all 0.3s;
     padding: 1vh;
     cursor: text;
@@ -145,7 +151,7 @@ h3 {
     backdrop-filter: blur(10px);
     border-radius: 5px;
     border: 1px solid var(--shadow-color);
-    box-shadow: 0 0 32px 0 var(--shadow-color);
+    box-shadow: 0 0 20px 0 var(--shadow-color);
     transition: all 0.3s;
     height: fit-content;
     padding: 1vh;
@@ -153,7 +159,7 @@ h3 {
 }
 
 .copy-button:hover, .copy-button-contact:hover {
-    box-shadow: 0 0 50px 20px var(--shadow-color-small);
+    box-shadow: 0 0 30px 5px var(--shadow-color-small);
     color: var(--accent-color);
 }
 
@@ -324,6 +330,7 @@ h3 {
         width: 100%;
         flex-direction: row;
         justify-content: space-between;
+        align-items: flex-end;
     }
 
     .main-content {
@@ -348,6 +355,10 @@ h3 {
         height: 100%;
     }
 
+    .menu {
+        gap: 3vw;
+    }
+
     .contact-general {
         flex-direction: row;
         align-content: center;
@@ -356,6 +367,10 @@ h3 {
 
     .social-text {
         display: none;
+    }
+
+    .email-container {
+        margin-top: 0;
     }
 }
 

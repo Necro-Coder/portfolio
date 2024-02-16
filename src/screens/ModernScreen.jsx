@@ -2,8 +2,10 @@ import {useEffect, useRef, useState} from "react";
 import {ModernCard} from "../modules/modern/util/ModernCard.jsx";
 import {SocialCard} from "../modules/modern/util/SocialCard.jsx";
 import {ToggleButton} from "../modules/modern/util/ToggleButton.jsx";
+import {useTranslation} from "react-i18next";
 
 export const ModernScreen = () => {
+    const { t, i18n } = useTranslation();
     const [activeContent, setActiveContent] = useState("about");
     const [copyContent, setCopyContent] = useState(<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                         fill="currentColor" className="bi bi-copy" viewBox="0 0 16 16">
@@ -17,6 +19,11 @@ export const ModernScreen = () => {
     </svg>);
     const inputRef = useRef();
     const [activeClass, setActiveClass] = useState("active-content");
+    function changeLanguage() {
+        let newLanguage = i18n.language === 'en' ? 'es' : 'en';
+        i18n.changeLanguage(newLanguage);
+    }
+
     useEffect(() => {
         const handleMouseMove = e => {
             document.body.style.setProperty('--x', `${e.clientX}px`);
@@ -59,17 +66,16 @@ export const ModernScreen = () => {
     return (
         <main className={"modern-container"}>
             <aside className={"aside-container"}>
-                <section>
-                    <section className={"menu"}>
-                        <section className={"menu-item flex place-items-center gap-3 group"}>
-                            <hr className={"link-bar group-hover:w-10"}/>
-                            <button className={"link-text"} onClick={() => changeContent("about")}> ABOUT ME</button>
-                        </section>
-                        <section className={"menu-item flex place-items-center gap-3 group"}>
-                            <hr className={"link-bar group-hover:w-10"}/>
-                            <button className={"link-text"} onClick={() => changeContent("projects")}> PROJECTS
-                            </button>
-                        </section>
+                <section className={"menu"}>
+                    <section className={"menu-item flex flex-col place-items-center gap-3 group"}>
+                        <button className={"link-text"} onClick={() => changeContent("about")}> {t("About")}
+                        </button>
+                        <hr className={"link-bar group-hover:w-40"}/>
+                    </section>
+                    <section className={"menu-item flex flex-col place-items-center gap-3 group"}>
+                        <button className={"link-text"} onClick={() => changeContent("projects")}> PROJECTS
+                        </button>
+                        <hr className={"link-bar group-hover:w-40"}/>
                     </section>
                 </section>
                 <section className={"contact-general"}>
@@ -99,23 +105,28 @@ export const ModernScreen = () => {
                         <button className={"copy-button-contact"} onClick={handleCopy}>
                             {copyEmail}
                         </button>
+                        <section className={"flex flex-col"}>
+                            <section className={"email-container flex gap-3 place-items-center justify-between"}>
+                                <input ref={inputRef} type={"text"} className={"email-input"}
+                                       value={"nunezcotanoruben@gmail.com"} readOnly/>
+                                <button className={"copy-button"} onClick={handleCopy}>
+                                    {copyContent}
+                                </button>
+                            </section>
+                        </section>
                     </section>
-                    <section className={"email-container flex gap-3 place-items-center justify-between"}>
-                        <input ref={inputRef} type={"text"} className={"email-input"}
-                               value={"nunezcotanoruben@gmail.com"} readOnly/>
-                        <button className={"copy-button"} onClick={handleCopy}>
-                            {copyContent}
-                        </button>
-                    </section>
-                    <ToggleButton className={"toggle-social"}/>
-                    <section className={"footer-text text-xs"}>
-                        <hr className={"my-3 opacity-50"}/>
-                        This website was made with React and TailwindCSS. <br/> <span
-                        className={"font-bold"}>
-                        <a href={"https://www.google.com"} className={"repository-text cursor-pointer"}>
+                    <section>
+                        <ToggleButton className={"toggle-social"}/>
+                        <section className={"footer-text text-xs"}>
+                            <hr className={"my-3 opacity-50"}/>
+                            This website was made with React and TailwindCSS. <br/> <span
+                            className={"font-bold"}>
+                        <a onClick={changeLanguage} className={"repository-text cursor-pointer"}>
                             Github Repository
                         </a>
                     </span>
+                        </section>
+
                     </section>
                 </section>
             </aside>
