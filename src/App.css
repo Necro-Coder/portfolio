@@ -29,6 +29,10 @@ body.light {
     --shadow-color-small: rgba(227, 100, 20, 0.15);
     --shadow-color-about: rgba(227, 100, 20, 0.05);
     --card-hover-color: rgba(214, 226, 233, 0.5);
+    --badge-color: #e36414;
+    --badge-bg-color: rgba(0, 119, 255, 0.2);
+    --badge-text-color: rgb(0, 119, 255);
+    --badge-shadow-color: rgba(0, 119, 255, 0.5);
 }
 
 body.dark {
@@ -42,6 +46,9 @@ body.dark {
     --shadow-color-small: rgba(130, 192, 204, 0.2);
     --shadow-color-about: rgba(130, 192, 204, 0.02);
     --card-hover-color: rgba(224, 251, 252, 0.2);
+    --badge-bg-color: rgba(111, 255, 231, 0.1);
+    --badge-text-color: rgb(111, 255, 231);
+    --badge-shadow-color: rgba(111, 255, 231, 0.5);
 }
 
 /* Body */
@@ -98,6 +105,32 @@ h3 {
 /* Contact */
 
 /* About me */
+.control-buttons {
+    display: flex;
+    gap: 1vh;
+    width: 100%;
+    justify-content: space-between;
+    place-items: center;
+
+}
+
+.language {
+    display: flex;
+    gap: 1vh;
+    place-items: center;
+}
+
+.trad-button {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    border: 1px solid var(--shadow-color);
+    box-shadow: 0 0 20px 0 var(--shadow-color-small);
+    transition: all 0.3s;
+    padding: 0.5vh 1vw;
+    cursor: pointer;
+}
+
 .about {
     margin-bottom: 3vh;
     display: flex;
@@ -123,12 +156,18 @@ h3 {
     width: 100%;
 }
 
-.about-content img {
+.avatar {
     width: 8vw;
     height: 8vw;
     border-radius: 100%;
     border: 1px solid var(--shadow-color);
     box-shadow: 0 0 20px 0 var(--shadow-color-small);
+}
+
+.technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw;
 }
 
 .about-content-header {
@@ -369,6 +408,29 @@ h3 {
     margin-bottom: 1vh;
 }
 
+/* Icons */
+.icon-default {
+    background: var(--badge-bg-color);
+    font-weight: bold;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    color: var(--badge-text-color);
+    box-shadow: 0 0 5px 0 var(--badge-shadow-color);
+    padding: 0.3vh 1.5vw;
+    border-radius: 9999px;
+    transition: all 0.3s;
+    animation: badge-bounce 4s infinite;
+}
+
+/* Effects */
+.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 3.5s steps(40, end);
+}
+
 @media (max-width: 1650px) {
     .aside-container {
         width: 100%;
@@ -480,6 +542,11 @@ h3 {
         border-radius: 100%;
         background-color: var(--accent-color);
     }
+    .icon-default {
+        font-size: small;
+        padding: 0.1vh 3vw;
+        margin: 1vw;
+    }
 }
 
 @media (max-width: 600px) {
@@ -527,7 +594,7 @@ h3 {
         margin: 1vh 0;
     }
 
-    .about-content img {
+    .avatar {
         width: 15vw;
         height: 15vw;
     }
@@ -565,4 +632,21 @@ h3 {
     100% {
         box-shadow: 0 0 10px 0 var(--shadow-color);
     }
+}
+
+@keyframes badge-bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
 }

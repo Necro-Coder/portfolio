@@ -3,21 +3,17 @@ import {SocialCard} from "../modules/modern/util/SocialCard.jsx";
 import {useTranslation} from "react-i18next";
 import {MainCard} from "../modules/modern/util/MainCard.jsx";
 import {ToggleButtonNoIcon} from "../modules/modern/util/ToggleButtonNoIcon.jsx";
+import {IconDefault} from "../modules/modern/util/icons/IconDefault.jsx";
+import {TradButton} from "../modules/modern/util/TradButton.jsx";
 
 export const ModernScreen = () => {
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const [copyContent, setCopyContent] = useState(<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                         fill="currentColor" className="bi bi-copy" viewBox="0 0 16 16">
         <path fillRule="evenodd"
               d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
     </svg>);
     const inputRef = useRef();
-
-    function changeLanguage() {
-        let newLanguage = i18n.language === 'en' ? 'es' : 'en';
-        i18n.changeLanguage(newLanguage);
-    }
-
     useEffect(() => {
         const handleMouseMove = e => {
             document.body.style.setProperty('--x', `${e.clientX}px`);
@@ -49,31 +45,44 @@ export const ModernScreen = () => {
             <aside className={"aside-container"}>
                 <section className={"contact-general"}>
                     <section className={"social-container"}>
-                        <ToggleButtonNoIcon/>
+                        <section className={"control-buttons"}>
+                            <ToggleButtonNoIcon/>
+                            <section className={"language"}>
+                                {t('Translate')}
+                                <TradButton/>
+                            </section>
+
+                        </section>
                         <section className={"about"}>
                             <section className={"header"}>
-                                <h2 className={"font-bold"}>About Me</h2>
+                                <h2 className={"font-bold"}>{t('About')}</h2>
                                 <section>
-                                    <p className={"name"}> Rubén Núñez Cotano</p>
+                                    <p className={"name typewriter"}> Rubén Núñez Cotano</p>
                                     <a href={t('CV')} target={"_blank"} rel="noopener noreferrer"
-                                       className={"cv"}> Click to see my CV </a>
+                                       className={"cv"}> {t('CV Button')} </a>
                                 </section>
                             </section>
                             <section className={"about-content"}>
                                 <section className={"about-content-header"}>
-                                    <img src={"https://avatars.githubusercontent.com/u/47273260?v=4"} alt={"Rubén"}/>
-                                    <p className={"hidden"}>
-                                        Desarrollador full stack, me especializo en web y android, usando lenguajes
-                                        como css, dart, javascript y java. Me apasiona el backend y las bases de datos,
-                                        y también tengo experiencia en el front end. Me gusta aprender nuevas
-                                        tecnologías, como Node.js, y contribuir al open source.
-                                    </p>
+                                    <img className={"avatar"}
+                                         src={"https://avatars.githubusercontent.com/u/47273260?v=4"} alt={"Rubén"}/>
                                     <p>
-                                        I`m full stack developer, I specialize in web and android, using languages such
-                                        as css, dart, javascript and java. I am passionate about backend and databases,
-                                        and I also have experience in front end. I like to learn new technologies,
-                                        such as Node.js, and contribute to open source.
+                                        {t('Personal Description')}
                                     </p>
+                                </section>
+                                <section className={"technologies"}>
+                                    <IconDefault text={"Dart"}/>
+                                    <IconDefault text={"Java"}/>
+                                    <IconDefault text={"React"}/>
+                                    <IconDefault text={"CSS"}/>
+                                    <IconDefault text={"HTML"}/>
+                                    <IconDefault text={"Node.js"}/>
+                                    <IconDefault text={".NET"}/>
+                                    <IconDefault text={"Flutter"}/>
+                                    <IconDefault text={"Python"}/>
+                                    <IconDefault text={"TailwindCSS"}/>
+                                    <IconDefault text={"JavaScript"}/>
+                                    <IconDefault text={"Android SDK"}/>
                                 </section>
                             </section>
                         </section>
@@ -97,7 +106,7 @@ export const ModernScreen = () => {
                                         </svg>
                                     }
                                     />
-                                    <p className={"social-text mr-2"}> Necro-Coder </p>
+                                    <p className={"social-text mr-2 typewriter"}> Necro-Coder  </p>
                                 </section>
                                 <section className={"flex place-items-center gap-3"}>
                                     <SocialCard href={"https://linkedin.com/in/ruben-nuñez-cotano-b6a154278/"} icon={
@@ -109,7 +118,7 @@ export const ModernScreen = () => {
                                         </svg>
                                     }
                                     />
-                                    <p className={"social-text"}> Rubén </p>
+                                    <p className={"social-text typewriter"}> Rubén  </p>
                                 </section>
                             </section>
                         </section>
@@ -118,10 +127,11 @@ export const ModernScreen = () => {
                     <section className={"footer-content"}>
                         <section className={"footer-text text-xs"}>
                             <hr className={"footer-hr"}/>
-                            This website was made with React, Vite, TailwindCSS and CSS native. <br/> <span
+                            {t('Footer Content')} <br/> <span
                             className={"font-bold"}>
-                                <a href={"https://google.com"} className={"repository-text cursor-pointer"}>
-                                    Github Repository
+                                <a href={"https://github.com/Necro-Coder/portfolio"} target={"_blank"}
+                                   className={"repository-text cursor-pointer"}>
+                                    {t('Repository')}
                                 </a>
                             </span>
                         </section>
