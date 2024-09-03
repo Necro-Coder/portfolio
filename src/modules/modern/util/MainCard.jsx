@@ -1,6 +1,7 @@
 import {ModernCard} from "./ModernCard.jsx";
 import {useTranslation} from "react-i18next";
 
+// eslint-disable-next-line react/prop-types
 export const MainCard = ( {className} ) => {
     const {t} = useTranslation();
     return (
