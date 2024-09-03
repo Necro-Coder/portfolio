@@ -3,24 +3,28 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master  # Cambia 'main' por la rama principal de tu proyecto
+      - main  # Cambia 'main' por la rama principal de tu proyecto
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
       with:
         node-version: '16'
-        
-    - run: chmod +x ./node_modules/.bin/vite
 
-    - run: npm install
-    - run: npm run build
+    - name: Install dependencies
+      run: npm install
 
-    - name: Deploy
+    - name: Build the project
+      run: npm run build
+
+    - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
