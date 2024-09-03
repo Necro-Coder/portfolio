@@ -14,6 +14,8 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: '16'
+        
+    - run: chmod +x ./node_modules/.bin/vite
 
     - run: npm install
     - run: npm run build
